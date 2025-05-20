@@ -1,0 +1,145 @@
+body{
+    background-color: #000;
+}
+@keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px); /* Start with the card a bit below */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0); /* End with the card in normal position */
+    }
+  }
+  
+  /* Apply the animation to the .pro-card for the Electrician profile */
+  .pro-card {
+    animation: fadeInUp 1s ease-out;
+  }
+  
+  /* The rest of the styles you already have */
+  .pro-list {
+    padding: 40px 20px;
+    background-color: #000; /* Match your site's black base */
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .pro-list h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: #ff6a00; /* Accent orange */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .pro-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .pro-card {
+    background: linear-gradient(to bottom right, #1a1a1a, #0f0f0f);
+    border: 1px solid #292929;
+    border-radius: 12px;
+    width: 350px;
+    display: flex;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(255, 106, 0, 0.2);
+    transition: transform 0.3s ease;
+  }
+  
+  .pro-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(255, 106, 0, 0.4);
+  }
+  
+  .pro-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+    object-fit: cover;
+    border: 2px solid #ff6a00;
+  }
+  
+  .pro-info {
+    flex: 1;
+  }
+  
+  .pro-info h3 {
+    margin: 0 0 5px;
+    font-size: 1.1rem;
+    color: #fff;
+  }
+  
+  .pro-info p {
+    margin: 3px 0;
+    font-size: 14px;
+    color: #ccc;
+  }
+  
+  .pro-desc {
+    font-style: italic;
+    color: #aaa;
+    margin: 10px 0;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  
+  .book-btn {
+    margin-top: 10px;
+    background: #ff6a00;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s ease;
+    width: 100%;
+  }
+  
+  .book-btn:hover {
+    background: #e65a00;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .pro-list {
+      padding: 20px 10px;
+    }
+  
+    .pro-list h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+  
+    .pro-cards {
+      gap: 15px;
+    }
+  
+    .pro-card {
+      width: 100%;
+      max-width: 350px;
+    }
+  
+    .pro-img {
+      width: 60px;
+      height: 60px;
+    }
+  
+    .pro-info h3 {
+      font-size: 1rem;
+    }
+  
+    .pro-info p {
+      font-size: 13px;
+    }
+  }
+  

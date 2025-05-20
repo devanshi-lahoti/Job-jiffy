@@ -1,0 +1,603 @@
+/* app.css */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .dark-theme {
+    background-color: #000000;
+    color: #ffffff;
+    min-height: 100vh;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #000000;
+  }
+  
+  .logo {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fff;
+  }
+  
+  .logo span {
+    color: #ff4c00;
+  }
+  
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+  }
+  
+  .nav-links li {
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .nav-links li:hover {
+    color: #ff4c00;
+  }
+  
+  .login-btn {
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  .login-btn:hover {
+    background: #ff4c00;
+    color: #000;
+  }
+  
+  .header {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(90deg, #1a0033, #ff4c00, #4c00ff);
+    color: #fff;
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: center;
+    margin: 1rem auto;
+    gap: 3rem;
+    border-bottom: 2px solid #ff4c00;
+  }
+  
+  .tab {
+    padding: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #fff;
+    transition: color 0.3s;
+  }
+
+  .tab:hover,
+  .tab.active {
+    color: #ff4c00;
+    border-bottom: 3px solid #ff4c00;
+  }
+  .active{
+    text-decoration: none;
+    color: #fdfefe;
+  }
+  .services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+    padding: 4rem 2rem;
+    max-width: 1600px;
+    margin: auto;
+    justify-items: center;
+  }
+  .nav{
+    text-decoration: none;
+    color: white;
+  }
+  .service-card {
+    background: linear-gradient(145deg, #ff4c00, #ff6a00);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 4rem;
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(255, 76, 0, 0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), transparent);
+    z-index: 1;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(255, 76, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.5);
+    background: linear-gradient(145deg, #ff6a00, #ff4c00);
+  }
+  
+  .service-text {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+  }
+  
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  .service-category {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .service-category h3 {
+    color: #00ff88;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(0, 255, 136, 0.3);
+  }
+
+  .providers-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .provider-card {
+    background: linear-gradient(145deg, #1e1e1e, #282828); /* Dark gradient background */
+    border-radius: 16px;
+    padding: 1.5rem; /* Adjusted padding */
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Lighter border */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack content vertically */
+    gap: 0.5rem; /* Reduced space between elements */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Ensure consistent font family */
+  }
+
+  .provider-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+    background: linear-gradient(145deg, #282828, #323232); /* Slightly lighter gradient on hover */
+    border-color: rgba(255, 255, 255, 0.3); /* More visible border on hover */
+  }
+
+  .provider-card h4 {
+    color: #ffffff; /* White color for name */
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    text-transform: capitalize;
+    font-weight: bold; /* Make name bold */
+  }
+
+  .provider-card p {
+    color: #cccccc; /* Light grey for labels and text */
+    margin: 0.3rem 0;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .provider-card .pricing {
+    color: #00ff88; /* Green for pricing */
+    font-weight: bold; /* Make pricing bold */
+    font-size: 1.2rem; /* Adjusted pricing font size */
+    margin: 0.5rem 0;
+  }
+
+  .provider-card .description {
+    color: #a0a0a0; /* Grey for description */
+    font-size: 1rem; /* Adjusted description font size */
+    line-height: 1.5;
+    margin-top: 0.5rem;
+    flex-grow: 1; /* Allow description to grow */
+  }
+
+  .provider-card .book-btn {
+    background-color: #ff4c00; /* Orange background */
+    color: #ffffff; /* White text */
+    border: none;
+    border-radius: 8px; /* Slightly less rounded button */
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-top: 1rem;
+    width: 100%; /* Make button full width */
+    text-align: center;
+  }
+
+  .provider-card .book-btn:hover {
+    background-color: #e64400; /* Darker orange on hover */
+    transform: translateY(-2px); /* Slight lift */
+  }
+
+  .provider-card .book-btn:active {
+    transform: translateY(0); /* No movement on active */
+  }
+
+  .loading, .error-message, .no-services {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    margin: 1rem 0;
+  }
+
+  .error-message {
+    color: #ff6b6b;
+    background-color: rgba(255, 107, 107, 0.1);
+  }
+
+  .no-services {
+    color: #a0a0a0;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .services {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      padding: 2rem 1rem;
+      gap: 2rem;
+    }
+
+    .service-card {
+      padding: 2rem;
+      min-height: 200px;
+    }
+
+    .service-text {
+      font-size: 2rem;
+    }
+  }
+
+  /* Animation for cards */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .provider-card {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .services-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .categories-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5rem;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .categories-list::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
+  .category-item {
+    flex: 0 0 auto;
+    padding: 1.5rem 3rem;
+    background: linear-gradient(145deg, #ff4c00, #ff6a00);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 16px rgba(255, 76, 0, 0.2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
+    margin: 0.5rem;
+  }
+
+  .category-item:hover {
+    background: linear-gradient(145deg, #ff6a00, #ff4c00);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 12px 24px rgba(255, 76, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .category-item h3 {
+    color: #fff;
+    font-size: 1.4rem;
+    margin: 0;
+    text-transform: capitalize;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .services-container {
+      padding: 1rem;
+    }
+
+    .category-item {
+      padding: 1.2rem 2rem;
+      min-width: 160px;
+      margin: 0.3rem;
+    }
+
+    .category-item h3 {
+      font-size: 1.2rem;
+    }
+
+    .categories-list {
+      padding: 1.5rem;
+      gap: 1rem;
+    }
+  }
+
+  /* Modal Styles */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 2rem;
+  }
+
+  .modal-content {
+    background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+    border-radius: 20px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 1200px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+
+  .close-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+  }
+
+  .modal-title {
+    color: #00ff88;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(0, 255, 136, 0.3);
+    text-transform: capitalize;
+    text-align: center;
+  }
+
+  .providers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  .provider-card {
+    background: linear-gradient(145deg, #1e1e1e, #282828); /* Dark gradient background */
+    border-radius: 16px;
+    padding: 1.5rem; /* Adjusted padding */
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Lighter border */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack content vertically */
+    gap: 0.5rem; /* Reduced space between elements */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Ensure consistent font family */
+  }
+
+  .provider-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+    background: linear-gradient(145deg, #282828, #323232); /* Slightly lighter gradient on hover */
+    border-color: rgba(255, 255, 255, 0.3); /* More visible border on hover */
+  }
+
+  .provider-card h4 {
+    color: #ffffff; /* White color for name */
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    text-transform: capitalize;
+    font-weight: bold; /* Make name bold */
+  }
+
+  .provider-card p {
+    color: #cccccc; /* Light grey for labels and text */
+    margin: 0.3rem 0;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .provider-card .pricing {
+    color: #00ff88; /* Green for pricing */
+    font-weight: bold; /* Make pricing bold */
+    font-size: 1.2rem; /* Adjusted pricing font size */
+    margin: 0.5rem 0;
+  }
+
+  .provider-card .description {
+    color: #a0a0a0; /* Grey for description */
+    font-size: 1rem; /* Adjusted description font size */
+    line-height: 1.5;
+    margin-top: 0.5rem;
+    flex-grow: 1; /* Allow description to grow */
+  }
+
+  .provider-card .book-btn {
+    background-color: #ff4c00; /* Orange background */
+    color: #ffffff; /* White text */
+    border: none;
+    border-radius: 8px; /* Slightly less rounded button */
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-top: 1rem;
+    width: 100%; /* Make button full width */
+    text-align: center;
+  }
+
+  .provider-card .book-btn:hover {
+    background-color: #e64400; /* Darker orange on hover */
+    transform: translateY(-2px); /* Slight lift */
+  }
+
+  .provider-card .book-btn:active {
+    transform: translateY(0); /* No movement on active */
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .services-container {
+      padding: 1rem;
+    }
+
+    .categories-list {
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    .category-item {
+      padding: 1rem 2rem;
+      width: calc(50% - 1rem);
+    }
+
+    .modal-content {
+      padding: 1.5rem;
+      width: 95%;
+    }
+
+    .modal-title {
+      font-size: 2rem;
+    }
+
+    .providers-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .provider-card {
+      padding: 1.5rem;
+    }
+
+    .provider-card h4 {
+      font-size: 1.4rem;
+    }
+
+    .provider-card p {
+      font-size: 0.9rem;
+    }
+
+    .provider-card .pricing {
+      font-size: 1.1rem;
+    }
+
+    .provider-card .description {
+      font-size: 0.9rem;
+    }
+
+    .provider-card .book-btn {
+      font-size: 0.9rem;
+      padding: 0.6rem 1rem;
+    }
+  }
+  
+  
+  

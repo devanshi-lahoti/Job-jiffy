@@ -1,0 +1,65 @@
+.login-choice-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+    padding: 20px;
+  }
+  
+  .login-choice-container h2 {
+    font-size: 2.5rem;
+    color: #ff6a00;
+    margin-bottom: 10px;
+  }
+  
+  .login-choice-container p {
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    color: #ccc;
+  }
+  
+  .choice-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  
+  /* Gradient Buttons with subtle hover */
+  .choice-buttons button {
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #ff6a00, #ff944d);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: none; /* no glow */
+  }
+  
+  .choice-buttons button:hover {
+    background: linear-gradient(135deg, #e65a00, #ff7f3f);
+    transform: scale(1.03);
+  }
+  
+  /* Smooth fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
