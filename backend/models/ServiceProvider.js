@@ -18,6 +18,12 @@ const serviceProviderSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  phone: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true
+  },
   serviceType: {
     type: String,
     enum: ['plumbing', 'electrical', 'carpentry', 'painting', 'cleaning', 'gardening', 'other'],

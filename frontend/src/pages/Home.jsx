@@ -200,6 +200,7 @@ const Home = () => {
                   >
                     <h4>Name: {provider.name}</h4>
                     <p>Location: {provider.location}</p>
+                    <p>Phone: {provider.phone}</p>
                     <p className="pricing">Price: {provider.pricing}</p>
                     <p className="description">Description: {provider.jobDescription}</p>
                     <button className="book-btn" onClick={() => navigate(`/services/${selectedCategory}/booking`)}>Book Now</button>

@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 // Service Provider Signup
 exports.signup = async (req, res) => {
   try {
-    const { name, email, password, serviceType, location, pricing, jobDescription } = req.body;
+    const { name, email, password, serviceType, location, pricing, jobDescription,phone } = req.body;
 
     // Check if service provider already exists
     const existingProvider = await ServiceProvider.findOne({ email });
@@ -23,7 +23,7 @@ exports.signup = async (req, res) => {
       serviceType,
       location,
       pricing,
-      jobDescription
+      jobDescription,phone
     });
 
     await serviceProvider.save();
@@ -38,7 +38,8 @@ exports.signup = async (req, res) => {
         serviceType: serviceProvider.serviceType,
         location: serviceProvider.location,
         pricing: serviceProvider.pricing,
-        jobDescription: serviceProvider.jobDescription
+        jobDescription: serviceProvider.jobDescription,
+        phone: serviceProvider.phone
       }
     });
   } catch (error) {

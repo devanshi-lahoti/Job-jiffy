@@ -16,76 +16,71 @@ const Profile = () => {
     state: '',
     city: '',
     bid: '',
-    profilePhoto: null,
+    role: '',
   });
 
-  const [photoPreview, setPhotoPreview] = useState(null);
-
   useEffect(() => {
-    // This is where you would typically fetch the logged-in user's profile data
-    // For example, from an API endpoint or an authentication context
     const fetchUserProfile = async () => {
       try {
-        // --- Replace with your actual backend API endpoint ---
-        const apiEndpoint = 'YOUR_BACKEND_PROFILE_API_ENDPOINT'; // e.g., 'http://localhost:5000/api/user/profile'
+        // --- Backend API endpoint for fetching user profile ---
+        const apiEndpoint = 'http://localhost:5000/api/user/profile'; // Your backend endpoint
 
-        // --- Add authentication headers if required by your backend ---
-        const token = localStorage.getItem('yourAuthTokenKey'); // Replace 'yourAuthTokenKey' with the key you use to store the token
+        // --- Retrieve JWT token from localStorage ---
+        const token = localStorage.getItem('token'); // <-- Assuming your token key is 'token'
+
+        // --- Add authentication headers ---
         const headers = {
           'Content-Type': 'application/json',
-          // Add Authorization header if your backend uses tokens (e.g., JWT)
-          // 'Authorization': `Bearer ${token}`,
+          // Add Authorization header with JWT token
+          'Authorization': `Bearer ${token}`, // <-- Include the JWT token here
         };
 
+        // --- Fetch user profile data from the backend ---
         const response = await fetch(apiEndpoint, {
-          method: 'GET', // Or the appropriate HTTP method for your API
+          method: 'GET', // Use GET method as per common REST practices for fetching data
           headers: headers,
         });
 
         if (response.ok) {
-          const data = await response.json();
-          // --- Adjust setUserData based on your backend response structure ---
-          // If your backend returns { success: true, data: { ...user data ... } }
-          // setUserData(data.data);
-          // If your backend returns { ...user data ... } directly
-          setUserData(data); // Use this line if 'data' is the user object
+          const responseData = await response.json(); // Parse the JSON response
 
-          // --- If your backend provides a photo URL/data, set photoPreview ---
-          // if (data.profilePhotoUrl) {
-          //   setPhotoPreview(data.profilePhotoUrl);
-          // } else if (data.profilePhotoDataUrl) { // if backend sends base64 data
-          //   setPhotoPreview(data.profilePhotoDataUrl);
-          // }
-
+          // --- Check if the backend returned the user object and set state ---
+          // Backend returns { message: '...', user: { ... } }
+          if (responseData.user) {
+            setUserData(responseData.user); // Set the user data from the 'user' property
+            // --- If your backend returns photo data/URL, set photoPreview here ---
+            // if (responseData.user.profilePhotoUrl) {
+            //   setPhotoPreview(responseData.user.profilePhotoUrl);
+            // } else if (responseData.user.profilePhotoDataUrl) { // if backend sends base64 data
+            //   setPhotoPreview(responseData.user.profilePhotoDataUrl);
+            // }
+          } else {
+             // Handle unexpected response structure from backend
+            console.error('Backend response did not contain user data:', responseData);
+            // Optionally set an error state or redirect
+          }
 
         } else {
           console.error('Failed to fetch user profile. Status:', response.status);
-          // Handle error (e.g., show error message, redirect to login if unauthorized)
-          // if (response.status === 401) {
-          //   navigate('/login'); // Example: redirect to login if unauthorized
-          // }
+          // Handle authentication errors (e.g., token expired, unauthorized)
+          if (response.status === 401 || response.status === 403) {
+             console.log('Unauthorized or Forbidden: Redirecting to login');
+             // Example: redirect to login page if using react-router-dom
+             // navigate('/login');
+          } else {
+            // Handle other HTTP errors
+            console.error('HTTP Error fetching user profile:', response.statusText);
+          }
         }
       } catch (error) {
         console.error('Error fetching user profile:', error);
         // Handle network errors or other exceptions
-        // setError('Failed to load profile. Please check your connection.'); // Example: set an error state
+        // Optionally set an error state to display to the user
+        // setError('Could not connect to the server to fetch profile.');
       }
     };
 
     fetchUserProfile(); // Call the fetch function when the component mounts
-
-    // Remove static user data assignment
-    // const storedUser = {
-    //   name: 'Disha Tiwari',
-    //   email: 'disha@example.com',
-    //   phone: '9876543210',
-    //   bio: 'Experienced UI developer.',
-    //   state: 'Maharashtra',
-    //   city: 'Mumbai',
-    //   bid: '500',
-    //   profilePhoto: null,
-    // };
-    // setUserData(storedUser); // Delete this line
 
   }, []); // Empty dependency array means this effect runs once on mount
 
@@ -103,18 +98,6 @@ const Profile = () => {
     }));
   };
 
-  const handlePhotoChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setUserData((prev) => ({ ...prev, profilePhoto: file }));
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPhotoPreview(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
   const handleUpdate = (e) => {
     e.preventDefault();
     console.log('Updated Profile:', userData);
@@ -125,14 +108,6 @@ const Profile = () => {
     <div className="dark-profile-container">
       <div className="dark-profile-card">
         <div className="left-section">
-          <div className="profile-pic">
-            {photoPreview ? (
-              <img src={photoPreview} alt="Profile" />
-            ) : (
-              <div className="placeholder">No Photo</div>
-            )}
-          </div>
-          <input type="file" accept="image/*" onChange={handlePhotoChange} />
           <h3>{userData.name || 'Your Name'}</h3>
           <div className="form-row">
               <label>Bio</label>
@@ -184,10 +159,13 @@ const Profile = () => {
               </select>
             </div>
 
-            <div className="form-row">
-              <label>Set Your Bid (₹)</label>
-              <input type="number" name="bid" value={userData.bid} onChange={handleChange} required />
-            </div>
+            {/* Conditionally render the bid field based on user role */}
+            {userData.role === 'serviceProvider' && (
+              <div className="form-row">
+                <label>Set Your Bid (₹)</label>
+                <input type="number" name="bid" value={userData.bid} onChange={handleChange} required />
+              </div>
+            )}
 
             <button type="submit" className="submit-btn">Update Profile</button>
           </form>

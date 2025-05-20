@@ -14,7 +14,8 @@ const Signup = () => {
     location: '',
     pricing: '',
     jobDescription: '',
-    serviceType: '' // New field for service type
+    serviceType: '', // New field for service type
+    phone: '' // Add phone field
   });
 
   const [error, setError] = useState('');
@@ -61,7 +62,8 @@ const Signup = () => {
           location: formData.location,
           pricing: formData.pricing,
           jobDescription: formData.jobDescription,
-          serviceType: formData.serviceType
+          serviceType: formData.serviceType,
+          phone: formData.phone // Include phone number
         };
         response = await axios.post('http://localhost:5000/api/auth/provider/signup', serviceProviderData);
       }
@@ -170,6 +172,17 @@ const Signup = () => {
                 placeholder="Describe your services and expertise"
                 required
                 className="job-description"
+              />
+            </div>
+
+            <div className="form-group">
+              <input
+                type="text"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="Phone Number"
+                required
               />
             </div>
           </div>

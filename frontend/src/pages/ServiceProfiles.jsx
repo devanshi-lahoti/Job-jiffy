@@ -21,6 +21,7 @@ const ServiceProfiles = () => {
               <h3>{pro.name}</h3>
               <p><strong>Experience:</strong> {pro.experience}</p>
               <p><strong>Location:</strong> {pro.location}</p>
+              <p><strong>Phone:</strong> {pro.phone}</p>
               <p><strong>Rating:</strong> ⭐ {pro.rating}</p>
               <p className="pro-desc">{pro.description}</p>
               <button className="book-btn" onClick={() => navigate(`/services/${serviceType}/booking`)}>Book Now</button>
