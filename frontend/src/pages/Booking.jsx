@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import './BookService.css';
+import axios from 'axios';
 
 const BookService = () => {
   const { serviceType } = useParams();
@@ -16,23 +17,53 @@ const BookService = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Show toast notification
-    toast.success("🎉 Booking confirmed!", {
-      position: "top-center",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      theme: "dark"
-    });
+    try {
+      // Send booking data to the backend
+      const response = await axios.post(`http://localhost:5000/api/book/${serviceType}`, formData);
 
-    // Optional redirect after short delay
-    setTimeout(() => {
-      navigate('/');
-    }, 2200);
+      if (response.data.success) {
+        // Show success toast on successful backend response
+        toast.success("🎉 Booking confirmed!", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          theme: "dark"
+        });
+
+        // Optional redirect after short delay
+        setTimeout(() => {
+          navigate('/');
+        }, 2200);
+
+      } else {
+        // Handle backend-specific errors if 'success' is false but no exception was thrown
+        toast.error(response.data.message || 'Booking failed.', {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          theme: "dark"
+        });
+      }
+
+    } catch (err) {
+      // Handle network errors or errors from the backend (e.g., 400, 500 status codes)
+      console.error('Booking submission error:', err);
+      toast.error(err.response?.data?.message || 'An error occurred during booking.', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        theme: "dark"
+      });
+    }
   };
 
   const handleChange = (e) => {
