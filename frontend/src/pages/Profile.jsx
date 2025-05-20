@@ -22,18 +22,72 @@ const Profile = () => {
   const [photoPreview, setPhotoPreview] = useState(null);
 
   useEffect(() => {
-    const storedUser = {
-      name: 'Disha Tiwari',
-      email: 'disha@example.com',
-      phone: '9876543210',
-      bio: 'Experienced UI developer.',
-      state: 'Maharashtra',
-      city: 'Mumbai',
-      bid: '500',
-      profilePhoto: null,
+    // This is where you would typically fetch the logged-in user's profile data
+    // For example, from an API endpoint or an authentication context
+    const fetchUserProfile = async () => {
+      try {
+        // --- Replace with your actual backend API endpoint ---
+        const apiEndpoint = 'YOUR_BACKEND_PROFILE_API_ENDPOINT'; // e.g., 'http://localhost:5000/api/user/profile'
+
+        // --- Add authentication headers if required by your backend ---
+        const token = localStorage.getItem('yourAuthTokenKey'); // Replace 'yourAuthTokenKey' with the key you use to store the token
+        const headers = {
+          'Content-Type': 'application/json',
+          // Add Authorization header if your backend uses tokens (e.g., JWT)
+          // 'Authorization': `Bearer ${token}`,
+        };
+
+        const response = await fetch(apiEndpoint, {
+          method: 'GET', // Or the appropriate HTTP method for your API
+          headers: headers,
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          // --- Adjust setUserData based on your backend response structure ---
+          // If your backend returns { success: true, data: { ...user data ... } }
+          // setUserData(data.data);
+          // If your backend returns { ...user data ... } directly
+          setUserData(data); // Use this line if 'data' is the user object
+
+          // --- If your backend provides a photo URL/data, set photoPreview ---
+          // if (data.profilePhotoUrl) {
+          //   setPhotoPreview(data.profilePhotoUrl);
+          // } else if (data.profilePhotoDataUrl) { // if backend sends base64 data
+          //   setPhotoPreview(data.profilePhotoDataUrl);
+          // }
+
+
+        } else {
+          console.error('Failed to fetch user profile. Status:', response.status);
+          // Handle error (e.g., show error message, redirect to login if unauthorized)
+          // if (response.status === 401) {
+          //   navigate('/login'); // Example: redirect to login if unauthorized
+          // }
+        }
+      } catch (error) {
+        console.error('Error fetching user profile:', error);
+        // Handle network errors or other exceptions
+        // setError('Failed to load profile. Please check your connection.'); // Example: set an error state
+      }
     };
-    setUserData(storedUser);
-  }, []);
+
+    fetchUserProfile(); // Call the fetch function when the component mounts
+
+    // Remove static user data assignment
+    // const storedUser = {
+    //   name: 'Disha Tiwari',
+    //   email: 'disha@example.com',
+    //   phone: '9876543210',
+    //   bio: 'Experienced UI developer.',
+    //   state: 'Maharashtra',
+    //   city: 'Mumbai',
+    //   bid: '500',
+    //   profilePhoto: null,
+    // };
+    // setUserData(storedUser); // Delete this line
+
+  }, []); // Empty dependency array means this effect runs once on mount
 
   const handleChange = (e) => {
     const { name, value } = e.target;

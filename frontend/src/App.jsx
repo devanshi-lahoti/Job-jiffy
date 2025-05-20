@@ -7,6 +7,7 @@ import Booking from './pages/Booking';
 import Choice from "./pages/Choice";
 import Registerr from "./pages/Registerr";
 import Profile from "./pages/Profile";
+import ReviewsPage from './pages/ReviewsPage';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/services/:serviceType/booking" element={<Booking/>} />
         <Route path="/register/provider" element={<Registerr/>}/>
         <Route path="/profile" element={<Profile/>}/>
+        <Route path="/reviews" element={<ReviewsPage />} />
       </Routes>
     </BrowserRouter>
   );

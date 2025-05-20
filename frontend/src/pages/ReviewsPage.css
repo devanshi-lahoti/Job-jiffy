@@ -1,0 +1,71 @@
+.reviews-page-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 2rem auto; /* Add top and bottom margin, keep horizontal centering */
+  text-align: center;
+  color: #ffffff; /* Ensure text is visible in dark theme */
+  background-color: #1e1e1e; /* Dark grey background */
+  border-radius: 12px; /* Add some border radius for consistency */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+}
+
+.reviews-page-container h2 {
+  color: #ff4c00; /* Orange color for the heading */
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(255, 76, 0, 0.3);
+  display: inline-block; /* Make border only as wide as the text */
+}
+
+.reviews-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.review-item {
+  background-color: rgba(255, 255, 255, 0.08); /* Subtle dark background for individual items */
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.review-text {
+  color: #cccccc; /* Light grey for review text */
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-style: italic; /* Italicize the review text */
+}
+
+.reviewer-name {
+  color: #a0a0a0; /* Grey for reviewer name */
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: right; /* Align name to the right */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .reviews-page-container {
+    padding: 1rem;
+  }
+
+  .reviews-page-container h2 {
+    font-size: 1.8rem;
+  }
+
+  .review-item {
+    padding: 1rem;
+  }
+
+  .review-text {
+    font-size: 1rem;
+  }
+
+  .reviewer-name {
+    font-size: 0.9rem;
+  }
+} 

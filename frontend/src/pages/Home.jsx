@@ -136,7 +136,10 @@ const Home = () => {
         </div>
         <div
           className={`tab ${activeTab === 'reviews' ? 'active' : ''}`}
-          onClick={() => setActiveTab('reviews')}
+          onClick={() => {
+            setActiveTab('reviews');
+            navigate('/reviews');
+          }}
         >
           REVIEWS
         </div>
